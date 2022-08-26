@@ -36,7 +36,7 @@ export class ChatComponent implements OnInit {
     this.form.reset();
     // answer message
     this.dataList.getAnswerData().subscribe(res =>{
-      this.answerMessage = res;
+      this.answerMessage = res['value'];
       this.chat.latestMessage = this.answerMessage;
      this.chat.messages.unshift({
       value: this.answerMessage,

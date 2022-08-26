@@ -73,11 +73,6 @@ export class DataChatsService {
 
   getAnswerData(){
     return this.http.get('https://api.chucknorris.io/jokes/random').pipe(
-      delay(10000),
-      map(res =>{
-        let answerMessage = res['value'];
-        return answerMessage;
-      })
-        )
+      delay(10000),)
   }
 }
