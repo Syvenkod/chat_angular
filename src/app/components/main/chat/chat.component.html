@@ -1,0 +1,33 @@
+<div id="container">
+    <div id="header">
+      <div class="avatarSection">
+        <div class="picture">
+          <img src="../../assets/images/noImg.svg" />
+        </div>
+        <!-- add name  -->
+        <div class="nameSection"> {{chat.name}}</div>
+      </div>
+    </div>
+    <div id="body">
+      <div class="message"
+        [ngClass]="{ me: message.me }"
+        *ngFor="let message of chat.messages">
+        <div class="messageContent">
+          {{ message.value }}</div>
+          <div class="time">{{ message.time }}</div>
+      </div>
+    </div>
+
+    <div id="send-message">
+      <div id="textarea">
+        <form novalidate [formGroup]="form" (ngSubmit)="onSubmit(form)">
+        <textarea
+        formControlName="message"
+        (keyup.enter)="onSubmit(form)">
+        </textarea>
+        <input id="send-icon" type="image" src="../../assets/images/Send-03.svg">
+        </form>
+      </div>
+    </div>
+
+  </div>

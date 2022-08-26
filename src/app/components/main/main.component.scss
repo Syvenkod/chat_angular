@@ -1,0 +1,29 @@
+$maincolor : #f7f9fa;
+#chatContainer {
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    margin: auto;
+    width: 70%;
+    height: 90%;
+    background-color: #fff;
+    right: 0px;
+    left: 0px;
+    box-shadow: -1px 1px 5px rgba(#333, 0.2);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+
+    app-sidebar {
+      flex-basis: 40%;
+      display: block;
+      height: 100%;
+      border-right: 1px solid #e8e8e8;
+    }
+
+    #chat {
+      background-color: $maincolor;
+      flex-grow: 1;
+      }
+    }

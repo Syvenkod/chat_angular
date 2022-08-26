@@ -1,0 +1,9 @@
+<div id="chatContainer">
+    <app-sidebar
+      (chatClicked)="onChatSelected($event)"
+    ></app-sidebar>
+    <div id="chat">
+      <app-chat [chat]="chat" *ngIf="chat"></app-chat>
+    </div>
+  </div>
+<router-outlet></router-outlet>

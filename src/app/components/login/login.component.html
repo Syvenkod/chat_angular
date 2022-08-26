@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div id="welcome">
+<form novalidate
+    id="login-form"
+    [formGroup]="loginForm">
+    <div>
+        Login
+        <br>
+        <input type="text" formControlName="userLogin">
+    </div>
+    <br>
+    <div>
+        Password
+        <br>
+        <input type="password" formControlName="userPass">
+    </div>
+    <br>
+    <button (click)="login()">Enter</button>
+</form>
+</div>

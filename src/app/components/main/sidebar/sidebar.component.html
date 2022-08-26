@@ -1,0 +1,39 @@
+<div id="sidebar">
+    <div id="row1">
+      <div id="sidebarHeader">
+        <div class="avatarContainer">
+          <img src="../../assets/images/noImg.svg" />
+        </div>
+      </div>
+      <div id="searchBox">
+        <img width="19" src="../../assets/images/searchIcon.svg" />
+        <input
+          [(ngModel)]="searchText"
+          type="text"
+          placeholder="Search or start the new chat"
+        />
+      </div>
+    </div>
+
+    <div id="sidebarContent">
+
+      <div
+        class="chat"
+        *ngFor="let chat of chats | searchFilter: searchText "
+        (click)="chatClicked.emit(chat)"
+      >
+        <div class="picture">
+          <img src="../../assets/images/noImg.svg" />
+        </div>
+        <div class="content">
+          <div class="chatHeader">
+            <div class="name">{{ chat.name }}</div>
+            <div class="time">{{ chat.time }}</div>
+          </div>
+          <div class="message">
+            {{ chat.latestMessage }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
