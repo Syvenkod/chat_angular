@@ -1,10 +1,10 @@
-$maincolor : #f7f9fa;
+
 #chatContainer {
     position: fixed;
     top: 0%;
     bottom: 0%;
     margin: auto;
-    width: 70%;
+    width: 80%;
     height: 90%;
     background-color: #fff;
     right: 0px;
@@ -23,7 +23,7 @@ $maincolor : #f7f9fa;
     }
 
     #chat {
-      background-color: $maincolor;
+      background-color: #f7f9fa;
       flex-grow: 1;
       }
     }

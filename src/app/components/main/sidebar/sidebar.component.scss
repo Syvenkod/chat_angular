@@ -9,7 +9,7 @@
       display: flex;
       flex-direction: column;
       #sidebarHeader {
-        flex-basis: 67px;
+        flex-basis: 5em;
         background-color: #eeeeee;
         display: flex;
         flex-direction: row;
@@ -18,26 +18,16 @@
         padding-right: 20px;
         justify-content: space-between;
         .avatarContainer {
-          flex-basis: 43px;
-          height: 43px;
+          height: 3em;
           img {
             height: 100%;
           }
         }
 
-        .actionsContainer {
-          height: 100%;
-          display: flex;
-          align-items: center;
-          width: 110px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
       }
 
       #searchBox {
-        flex-basis: 50px;
+        flex-basis: 3em;
         background-color: #fbfbfb;
         border-bottom: 1px solid #e1e4e5;
         display: flex;
@@ -68,25 +58,30 @@
     #sidebarContent {
       flex-grow: 1;
       overflow: auto;
+      h3{
+        color: #2a148b;
+        margin-left: 1em;
+      }
 
       .chat {
-        height: 67px;
+        height: 4.5em;
         display: flex;
         padding-right: 5px;
-        transition: all 0.4s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        justify-content: space-between;
         cursor: pointer;
         &:hover {
-          background-color: rgba(#ccc, 0.05);
+          background-color: rgba( #2a148b, 0.05);
         }
         .picture {
-          flex-basis: 73px;
+          flex-basis: 5em;
           height: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
           img {
             max-width: 100%;
-            width: 48px;
+            width: 3em;
           }
         }
         .content {
@@ -94,6 +89,8 @@
           flex-grow: 1;
           padding: 13px 0px;
           padding-right: 10px;
+          width: 80%;
+          overflow: hidden;
           .chatHeader {
             display: flex;
             flex-direction: row;

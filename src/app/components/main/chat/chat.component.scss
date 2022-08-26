@@ -2,11 +2,11 @@
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: #e7dfdc;
+    background-color: rgba( #2a148b, 0.05);
     flex-direction: column;
 
     #header {
-      min-height: 67px;
+      min-height: 5em;
       background-color: #eeeeee;
       box-shadow: 2px 0px 4px #ccc;
       display: flex;
@@ -16,6 +16,7 @@
       .avatarSection {
         display: flex;
         .picture {
+          flex-basis: 5em;
           min-width: 40px;
           max-width: 40px;
           margin: 0 10px;
@@ -43,28 +44,28 @@
         margin-top: 10px;
         display: flex;
         align-items: flex-start;
-        color: #767676;
         flex-direction: column;
         .messageContent {
-          background-color: #fff;
+          background-color:#131e66c9;
           border-radius: 20px;
           padding: 10px;
-
-          .time {
-            text-align: right;
-            color: #959698;
-            font-size: 10px;
-            margin-top: 5px;
-          }
+          color:#eeeeee;
         }
 
         &.me {
           align-items: flex-end;
           .messageContent {
-            background-color: #dcf7c5;
+            background-color: #dcdfd9d8;
+            color: #545454;
           }
         }
       }
+    }
+    .time {
+      text-align: right;
+      color: #959698;
+      font-size: 0.6em;
+      margin-top: 5px;
     }
 
     #send-message{

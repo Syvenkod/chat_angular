@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataChatsService } from '../../shared/data-chats.service';
 
@@ -7,7 +7,7 @@ import { DataChatsService } from '../../shared/data-chats.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterContentChecked  {
   @Input() chat;
   chats: any [] | undefined;
   form: FormGroup;
@@ -27,27 +27,29 @@ export class ChatComponent implements OnInit {
     let newMessage = form.value.message.trim();
     this.message = '';
     this.chat.latestMessage = newMessage;
-    this.chat.time = new Date().toLocaleDateString('en-us',{month: 'short', day:'numeric', year:'numeric'});
+    this.chat.time = new Date().toLocaleDateString('en-us',{month: 'short', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'});
     this.chat.messages.unshift({
       value: newMessage,
       time: new Date().toLocaleDateString('en-us',{month: 'numeric', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'}),
       me: true,
     });
-
     this.form.reset();
+
     // answer message
     this.dataList.getAnswerData().subscribe(res =>{
       this.answerMessage = res['value'];
       this.chat.latestMessage = this.answerMessage;
-      this.chat.time = new Date().toLocaleDateString('en-us',{month: 'short', day:'numeric', year:'numeric'});
+      this.chat.time = new Date().toLocaleDateString('en-us',{month: 'short', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'});
      this.chat.messages.unshift({
       value: this.answerMessage,
       time: new Date().toLocaleDateString('en-us',{month: 'numeric', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'}),
       me: false,
     });
-    sessionStorage.setItem('chat',JSON.stringify(this.chats))
     });
   }
 
+  ngAfterContentChecked(): void {
+    sessionStorage.setItem('chat',JSON.stringify(this.chats));
+  }
 }
 

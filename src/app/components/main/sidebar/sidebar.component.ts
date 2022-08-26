@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, EventEmitter, OnInit, Output  } from '@angular/core';
+import { AfterViewChecked, Component, EventEmitter, OnInit, Output  } from '@angular/core';
 import { DataChatsService } from '../../shared/data-chats.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { DataChatsService } from '../../shared/data-chats.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit, AfterContentChecked {
+export class SidebarComponent implements OnInit, AfterViewChecked {
 
   @Output() chatClicked: EventEmitter<any> = new EventEmitter();
   searchText: string;
@@ -19,7 +19,15 @@ export class SidebarComponent implements OnInit, AfterContentChecked {
   ngOnInit(): void {
     this.chats = this.dataList.getData();
   }
-  ngAfterContentChecked(): void {
+
+  sortChats(){
+    this.chats.sort(function(a,b){
+    return new Date(b.time).getTime() - new Date(a.time).getTime()
+  })
   }
 
+  ngAfterViewChecked(): void {
+    sessionStorage.setItem('chat',JSON.stringify(this.chats));
+    this.sortChats();
+  }
 }
