@@ -22,17 +22,4 @@ export class SidebarComponent implements OnInit, AfterContentChecked {
   ngAfterContentChecked(): void {
   }
 
-  get filteredChats() {
-    return this.chats.filter((chat) => {
-      return (
-        chat.name
-          .toLowerCase()
-          .includes(this.searchText.toLowerCase()) ||
-        chat.latestMessage
-          .toLowerCase()
-          .includes(this.searchText.toLowerCase())
-      );
-    });
-  }
-
 }
