@@ -11,8 +11,8 @@ export class ChatComponent implements OnInit, AfterContentChecked  {
   @Input() chat;
   chats: any [] | undefined;
   form: FormGroup;
-  message = '';
-  answerMessage;
+  message: string;
+  answerMessage: string;
   constructor(private dataList: DataChatsService) { }
 
   ngOnInit(): void {
@@ -24,10 +24,10 @@ export class ChatComponent implements OnInit, AfterContentChecked  {
 
   onSubmit(form){
     // user message
-    let newMessage = form.value.message.trim();
+    let newMessage = form.value.message;
     this.message = '';
     this.chat.latestMessage = newMessage;
-    this.chat.time = new Date().toLocaleDateString('en-us',{month: 'short', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'});
+    this.chat.time = new Date().toLocaleDateString('en-us',{month: 'short', day:'numeric', year:'numeric'});
     this.chat.messages.unshift({
       value: newMessage,
       time: new Date().toLocaleDateString('en-us',{month: 'numeric', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'}),
@@ -39,7 +39,7 @@ export class ChatComponent implements OnInit, AfterContentChecked  {
     this.dataList.getAnswerData().subscribe(res =>{
       this.answerMessage = res['value'];
       this.chat.latestMessage = this.answerMessage;
-      this.chat.time = new Date().toLocaleDateString('en-us',{month: 'short', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'});
+      this.chat.time = new Date().toLocaleDateString('en-us',{month: 'short', day:'numeric', year:'numeric'});
      this.chat.messages.unshift({
       value: this.answerMessage,
       time: new Date().toLocaleDateString('en-us',{month: 'numeric', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'}),
