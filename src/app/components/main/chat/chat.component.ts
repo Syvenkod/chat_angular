@@ -12,18 +12,15 @@ export class ChatComponent implements OnInit, AfterContentChecked  {
   chats: any [] | undefined;
   form: FormGroup;
   message: string;
-  answerMessage: string;
   constructor(private dataList: DataChatsService) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
       message: new FormControl("", [Validators.required, Validators.minLength(1)])
     })
-    this.chats = this.dataList.getData();
   }
 
   onSubmit(form){
-    // user message
     let newMessage = form.value.message;
     this.message = '';
     this.chat.latestMessage = newMessage;
@@ -33,20 +30,23 @@ export class ChatComponent implements OnInit, AfterContentChecked  {
       time: new Date().toLocaleDateString('en-us',{month: 'numeric', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'}),
       me: true,
     });
+    this.sendAnswerMessage();
     this.form.reset();
+  }
 
-    // answer message
-    this.dataList.getAnswerData().subscribe(res =>{
-      this.answerMessage = res['value'];
-      this.chat.latestMessage = this.answerMessage;
+  sendAnswerMessage(){
+      this.dataList.getAnswerData().subscribe(res =>{
+      let answerMessage = res['value'];
+      this.chat.latestMessage = answerMessage;
       this.chat.time = new Date().toLocaleDateString('en-us',{month: 'short', day:'numeric', year:'numeric'});
-     this.chat.messages.unshift({
-      value: this.answerMessage,
+      this.chat.messages.unshift({
+      value: answerMessage,
       time: new Date().toLocaleDateString('en-us',{month: 'numeric', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'}),
       me: false,
     });
     });
   }
+
 
   ngAfterContentChecked(): void {
     sessionStorage.setItem('chat',JSON.stringify(this.chats));

@@ -70,6 +70,6 @@ export class DataChatsService {
 
   getAnswerData(){
     return this.http.get('https://api.chucknorris.io/jokes/random').pipe(
-      delay(10000),)
+      delay(5000),)
   }
 }

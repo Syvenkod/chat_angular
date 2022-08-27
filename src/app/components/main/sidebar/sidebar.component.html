@@ -19,7 +19,7 @@
       <h3>Chats</h3>
       <div
         class="chat"
-        *ngFor="let chat of chats | searchFilter: searchText "
+        *ngFor="let chat of chats | searchFilter: searchText"
         (click)="chatClicked.emit(chat)"
       >
         <div class="picture">
