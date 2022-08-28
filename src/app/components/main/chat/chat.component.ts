@@ -12,6 +12,7 @@ export class ChatComponent implements OnInit, AfterContentChecked  {
   chats: any [] | undefined;
   form: FormGroup;
   message: string;
+  userId: number;
   constructor(private dataList: DataChatsService) { }
 
   ngOnInit(): void {
@@ -21,7 +22,8 @@ export class ChatComponent implements OnInit, AfterContentChecked  {
   }
 
   onSubmit(form){
-    let newMessage = form.value.message;
+    if (form.valid){
+    let newMessage = form.value.message.trim();
     this.message = '';
     this.chat.latestMessage = newMessage;
     this.chat.time = new Date().toLocaleDateString('en-us',{month: 'short', day:'numeric', year:'numeric'});
@@ -30,8 +32,10 @@ export class ChatComponent implements OnInit, AfterContentChecked  {
       time: new Date().toLocaleDateString('en-us',{month: 'numeric', day:'numeric', year:'numeric', hour:'numeric', minute:'numeric'}),
       me: true,
     });
+    this.userId = this.chat.userId;
     this.sendAnswerMessage();
     this.form.reset();
+  }
   }
 
   sendAnswerMessage(){
@@ -47,9 +51,7 @@ export class ChatComponent implements OnInit, AfterContentChecked  {
     });
   }
 
-
   ngAfterContentChecked(): void {
-    sessionStorage.setItem('chat',JSON.stringify(this.chats));
   }
 }
 
