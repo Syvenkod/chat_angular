@@ -25,9 +25,7 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.get("userLogin").value, this.loginForm.get("userPass").value);
     this.authService.loginService(this.loginForm.get("userLogin").value, this.loginForm.get("userPass").value);
     this.userName = this.loginForm.get("userLogin").value
-    console.log(this.userName);
     this.router.navigateByUrl('/main')
   }
-
 
 }
