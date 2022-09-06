@@ -44,6 +44,13 @@
         display: flex;
         align-items: flex-start;
         flex-direction: column;
+        transition-timing-function: cubic-bezier(.4,-.04, 1, 1);
+                    @for $i from 1 through 10 {
+                        &:nth-of-type(#{$i}) {
+                            animation-duration: .15s * $i;
+                        }
+                    }
+        animation-name: slideFromLeft;
         .messageContent {
           max-width: 80%;
           background-color:#131e66c9;
@@ -54,6 +61,7 @@
 
         &.me {
           align-items: flex-end;
+          animation-name: slideFromRight;
           .messageContent {
             background-color: #dcdfd9d8;
             color: #545454;
@@ -104,3 +112,44 @@
       }
     }
   }
+
+@keyframes slideFromLeft {
+    0% {
+        margin-left: -50px;
+        opacity: 0;
+    }
+    100% {
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+@-webkit-keyframes slideFromLeft {
+    0% {
+        margin-left: -50px;
+        opacity: 0;
+    }
+    100% {
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+@keyframes slideFromRight {
+    0% {
+        margin-right: -200px;
+        opacity: 0;
+    }
+    100% {
+        margin-right: 0;
+        opacity: 1;
+    }
+}
+@-webkit-keyframes slideFromRight {
+    0% {
+        margin-right: -200px;
+        opacity: 0;
+    }
+    100% {
+        margin-right: 0;
+        opacity: 1;
+    }
+}
