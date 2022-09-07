@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from './components/login/auth-services/auth.service';
+import 'css-doodle';
 
 @Component({
   selector: 'app-root',
