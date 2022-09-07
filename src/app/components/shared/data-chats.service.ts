@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { delay, map } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class DataChatsService {
   chats = [
     {
       userId: 1,
+      avatar: '../../../assets/images/women_1.jpg',
       name: 'Alice Freeman',
       time: 'Jun 12, 2017',
       latestMessage: 'You are the best!!',
@@ -23,6 +24,7 @@ export class DataChatsService {
     },
     {
       userId: 2,
+      avatar: '../../../assets/images/women_2.jpg',
       name: 'Josefina',
       time: 'Feb 18, 2017',
       latestMessage: 'We are losing money!Quick!',
@@ -34,6 +36,7 @@ export class DataChatsService {
     },
     {
       userId: 3,
+      avatar: '../../../assets/images/men_1.jpg',
       name: 'Velazquez',
       time: 'Mar 18, 2017',
       latestMessage: 'Quckly come to the meeting room 1B, we have a big server issue',
@@ -45,6 +48,7 @@ export class DataChatsService {
     },
     {
       userId: 4,
+      avatar: '../../../assets/images/men_2.jpg',
       name: 'Barrera',
       time: 'Feb 18, 2017',
       latestMessage: 'lol',
