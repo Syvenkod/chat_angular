@@ -1,6 +1,6 @@
 import { AfterContentChecked, Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DataChatsService } from '../../shared/data-chats.service';
+import { DataChatsService } from '../../shared/data/data-chats.service';
 
 @Component({
   selector: 'app-chat',

@@ -1,5 +1,5 @@
 import { AfterViewChecked, Component, EventEmitter, OnInit, Output  } from '@angular/core';
-import { DataChatsService } from '../../shared/data-chats.service';
+import { DataChatsService } from '../../shared/data/data-chats.service';
 
 @Component({
   selector: 'app-sidebar',
