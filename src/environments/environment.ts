@@ -12,8 +12,6 @@ export const environment = {
     messagingSenderId: "1089322634676",
     appId: "1:1089322634676:web:089b5166d6cefe4d1bf6e1"
   },
-  database: 'firebase',
-  socialAuthEnabled: true
 };
 
 /*
