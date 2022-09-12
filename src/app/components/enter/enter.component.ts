@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth-services/auth.service';
 import { Router } from '@angular/router';
-import { faFacebook, faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faGoogle, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 
 @Component({
@@ -19,6 +19,7 @@ export class EnterComponent implements OnInit {
   facebook = faFacebook;
   google = faGoogle;
   linkedin = faLinkedinIn;
+  gitHub = faGithub;
 
   public userName:string;
 

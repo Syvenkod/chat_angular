@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from '../user';
 import * as auth from 'firebase/auth';
+import { sendEmailVerification } from "firebase/auth";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument} from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
@@ -20,10 +21,10 @@ export class AuthService  {
       if (user){
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);
+        JSON.parse(localStorage.getItem('user'));
       } else {
         localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
+        JSON.parse(localStorage.getItem('user'));
       }
     });
   }
@@ -51,11 +52,6 @@ export class AuthService  {
         this.sendVerificationMail();
         this.setUserData(result.user);
       })
-      // .then(function(){
-      //   this.user.updateProfile({
-      //    displayName: displayName
-      //   })
-      // })
       .catch((error) => {
         window.alert(error.message);
       });
@@ -63,7 +59,8 @@ export class AuthService  {
 
   sendVerificationMail() {
     return this.afAuth.currentUser
-      .then((user: any) => user.sendEmailVerification())
+      .then((user: any) => {user.sendEmailVerification()}
+      )
       .then(() => {
         this.router.navigate(['verify-email']);
       });
@@ -81,7 +78,7 @@ export class AuthService  {
   }
 
   get isLoggedIn():boolean{
-    const user = JSON.parse(localStorage.getItem('user')!);
+    const user = JSON.parse(localStorage.getItem('user'));
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
