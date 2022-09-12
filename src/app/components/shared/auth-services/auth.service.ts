@@ -89,7 +89,7 @@ export class AuthService  {
   }
 
   facebookAuth() {
-    return this.authLogin(new FacebookAuthProvider()).then((res: any) => {
+    return this.authLogin(new auth.FacebookAuthProvider()).then((res: any) => {
       this.router.navigate(['main']);
     });
   }
