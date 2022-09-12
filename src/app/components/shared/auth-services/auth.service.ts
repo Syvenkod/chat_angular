@@ -1,9 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from '../user';
 import * as auth from 'firebase/auth';
-import { sendEmailVerification } from "firebase/auth";
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument} from '@angular/fire/compat/firestore';
+import { FacebookAuthProvider } from 'firebase/auth';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -86,6 +86,10 @@ export class AuthService  {
     return this.authLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       this.router.navigate(['main']);
     });
+  }
+
+  facebookAuth() {
+    return this.authLogin(new FacebookAuthProvider());
   }
 
   authLogin(provider: any) {

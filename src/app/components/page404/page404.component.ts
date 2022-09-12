@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styles: [`h2{
     text-align: center;
     font-size: 40px;
-    background: pink;
+    position: absolute;
+    top: 40%;
+    bottom: 60%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
 }`]
 })
 export class Page404Component implements OnInit {
