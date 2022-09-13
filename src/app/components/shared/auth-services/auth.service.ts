@@ -3,7 +3,6 @@ import { User } from '../user';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument} from '@angular/fire/compat/firestore';
-import { FacebookAuthProvider } from 'firebase/auth';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -79,19 +78,19 @@ export class AuthService  {
 
   get isLoggedIn():boolean{
     const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null && (user.emailVerified !== false || user.isAnonymous !== true) ? true : false;
   }
 
   googleAuth() {
-    return this.authLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['main']);
-    });
+    return this.authLogin(new auth.GoogleAuthProvider());
   }
 
   facebookAuth() {
-    return this.authLogin(new FacebookAuthProvider()).then((res: any) => {
-      this.router.navigate(['main']);
-    });
+    return this.authLogin(new auth.FacebookAuthProvider());
+  }
+
+  gitHubAuth() {
+    return this.authLogin(new auth.GithubAuthProvider());
   }
 
   authLogin(provider: any) {
@@ -99,6 +98,7 @@ export class AuthService  {
       .signInWithPopup(provider)
       .then((result) => {
         this.setUserData(result.user);
+        this.router.navigate(['main']);
       })
       .catch((error) => {
         window.alert(error);
