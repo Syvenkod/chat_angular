@@ -41,7 +41,7 @@ a {
 	margin: 15px 0;
 }
 
-button {
+.btn {
 	border-radius: 20px;
 	border: 1px solid #5759e6;
 	background-color: #5759e6;
@@ -54,15 +54,15 @@ button {
 	transition: transform 80ms ease-in;
 }
 
-button:active {
+.btn:active {
 	transform: scale(0.95);
 }
 
-button:focus {
+.btn:focus {
 	outline: none;
 }
 
-button.ghost {
+.btn +.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
@@ -77,14 +77,24 @@ form {
 	height: 100%;
 	text-align: center;
 }
-
-input {
-	background-color: #eee;
-	border: none;
+.email-container .mat-form-field + .mat-form-field,
+.password-container .mat-form-field + .mat-form-field {
+	margin-left: 8px;
 	padding: 12px 15px;
-	margin: 8px 0;
-	width: 100%;
-}
+  }
+
+  .password-right-align {
+	text-align: right;
+  }
+
+  input.password-right-align::-webkit-outer-spin-button,
+  input.password-right-align::-webkit-inner-spin-button {
+	display: none;
+  }
+
+  input.password-right-align {
+	-moz-appearance: textfield;
+  }
 
 .container {
 	position: absolute;

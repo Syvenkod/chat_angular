@@ -40,7 +40,7 @@ export class AuthService  {
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        console.log(error.message);
       });
   }
 
@@ -49,10 +49,14 @@ export class AuthService  {
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         this.sendVerificationMail();
+        result.user.updateProfile({
+          displayName: email,
+          photoURL:"../assets/images/noImg.svg",
+        });
         this.setUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        console.log(error.message);
       });
   }
 
@@ -61,7 +65,7 @@ export class AuthService  {
       .then((user: any) => {user.sendEmailVerification()}
       )
       .then(() => {
-        this.router.navigate(['verify-email']);
+        this.router.navigate([' '])
       });
   }
 
@@ -72,13 +76,17 @@ export class AuthService  {
         window.alert('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
-        window.alert(error);
+        console.log(error);
       });
   }
 
   get isLoggedIn():boolean{
     const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null && (user.emailVerified !== false || user.isAnonymous !== true) ? true : false;
+    return user !== null && (user.emailVerified !== false ||
+    (user.providerData[0].providerId === 'google.com' ||
+    user.providerData[0].providerId === 'facebook.com' ||
+    user.providerData[0].providerId === 'github.com'))
+    ? true : false;
   }
 
   googleAuth() {
@@ -101,7 +109,7 @@ export class AuthService  {
         this.router.navigate(['main']);
       })
       .catch((error) => {
-        window.alert(error);
+        console.log(error);
       });
   }
 
@@ -120,4 +128,12 @@ export class AuthService  {
       merge: true,
     });
   }
+
+  getErrorMessage(email: any) {
+    if (email.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return email.hasError('email') ? 'Not a valid email' : '';
+  }
+
 }

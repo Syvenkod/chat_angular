@@ -17,5 +17,4 @@ export class AuthGuardService implements CanActivate {
     }
     return true;
   }
-
 }

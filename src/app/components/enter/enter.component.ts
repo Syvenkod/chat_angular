@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth-services/auth.service';
-import { Router } from '@angular/router';
 import { faFacebook, faGoogle, faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 
@@ -20,20 +19,20 @@ export class EnterComponent implements OnInit {
   google = faGoogle;
   linkedin = faLinkedinIn;
   gitHub = faGithub;
+  hide = true;
 
-  public userName:string;
-
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService,) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      login: new FormControl(null, [Validators.required, Validators.email]),
-      pass: new FormControl(null, Validators.required),
+      login: new FormControl('', [Validators.required, Validators.email]),
+      pass: new FormControl('', Validators.required),
     });
 
     this.registrationForm = new FormGroup({
-      userEmail: new FormControl(null,[Validators.required, Validators.email]),
-      userPass: new FormControl(null, Validators.required),
+      userEmail: new FormControl('',[Validators.required, Validators.email]),
+      userPass: new FormControl('', Validators.required),
     })
+
   }
 }

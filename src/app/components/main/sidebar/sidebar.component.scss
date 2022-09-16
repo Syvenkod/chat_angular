@@ -19,11 +19,21 @@
         justify-content: space-between;
         .avatarContainer {
           height: 3em;
-          img {
-            height: 100%;
-          }
+          display: flex;
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+            .nameSection {
+              flex-grow: 1;
+              color: #545454;
+              display: flex;
+              align-items: center;
+              margin-left: 10px;
+            }
         }
-
       }
 
       #searchBox {
