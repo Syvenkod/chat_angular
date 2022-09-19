@@ -1,4 +1,4 @@
-<div class="verify">
+<div id="container" class="verify">
       <div>
         <h2>Thank You for Registering</h2>
 
@@ -15,6 +15,7 @@
 
         <div>
           <button
+            class="btn"
             type="button"
             (click)="authService.sendVerificationMail()"
           >
@@ -25,7 +26,9 @@
 
       <div class="redirectToLogin">
         <h3>Go back to?</h3>
-        <button type="button" routerLink="">
+        <button
+        class="btn"
+        type="button" routerLink="">
            Sign in
           </button>
       </div>
