@@ -65,7 +65,7 @@ export class AuthService  {
       .then((user: any) => {user.sendEmailVerification()}
       )
       .then(() => {
-        this.router.navigate([' '])
+        this.router.navigate(['verify-email'])
       });
   }
 
